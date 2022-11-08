@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+*
+
+
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body
+{
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(#77CFF2, #0D8BD9);
+}
+
+header
+{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+    list-style: none;
+}
+
+header .logo
+{
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+}
+
+header ul
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+header ul li
+{
+    list-style: none;
+    margin-left: 20px;
+    
+}
+
+@media only screen and (max-width: 750px){
+    header ul {
+        flex-direction: column;
+    }
+    header ul li 
+    {
+        padding-bottom: 10px;
+    }
+}
+
+header ul li a 
+{
+    text-decoration: none;
+    padding:6px 15px;
+    color: #fff;
+    border-radius: 20px;
+
+}
+
+header ul li a:hover  , 
+header ul li a.active
+{
+    background: #fff;
+    color: #5D733D;
+
+}
+
+section
+{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+
+section img 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.contact {
+    text-align: center;
+    background-color: transparent;
+    padding: 100px;
+    height: 50vh;
+    margin-top: 10vh;
+    /* background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 500px; */
+}
+  
+  
+  .fnbox, .lnbox, .ebox, .mbox, .emailbtn
+  {
+    border: none;
+    outline: none;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .fnbox
+  {
+    width: 25vw;
+    height: 5vh;
+    padding: 0 10px;
+    border-radius: 40px;
+  }
+  
+  .lnbox
+  {
+    width: 25vw;
+    height: 5vh;
+    padding: 0 10px;
+    border-radius: 40px;
+  }
+
+  .ebox
+  {
+    width: 50vw;
+    height: 5vh;
+    padding: 0 10px;
+    border-radius: 40px;
+  }
+  
+  .mbox
+  {
+    width: 50vw;
+    height: 20vh;
+    padding: 0 10px;
+    border-radius: 40px;
+  }
+  
+  .emailbtn
+  {
+     background: rgb(152, 92, 173);
+     color:#fff;
+     padding: 0 10px;
+     text-transform: uppercase;
+     cursor: pointer;
+     border-radius: 40px;
+     height: 5vh;
+     width: 50vw;
+     text-align: center;
+  }
+  
+  .contact-text
+  {
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #056baa;
+    color:white;
+    border-radius: 40px;
+    padding: 0 10px;
+    height: 5vh;
+    margin-bottom: 10px;
+  }
+  
+  section
+  {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      padding: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+  
+  }
+  
+
+  
+  
+  
+  section img 
+  {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+  }
+
+  section img 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.socials {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 0px;
+    padding-right: 25px;
+    background-color: rgb(152, 92, 173);
+  }
+  
+  .socials ion-icon {
+    margin: 20px;
+    color: #fff;
+    transform: translateY(-5vh);
+  }

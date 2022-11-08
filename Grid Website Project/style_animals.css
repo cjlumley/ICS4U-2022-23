@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+*
+
+
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body
+{
+    min-height: 1vh;
+    max-height: 75vh;
+    overflow-x: hidden;
+    background: linear-gradient(#F2A2A2, #fdad6b);
+}
+
+header
+{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+    list-style: none;
+}
+
+header .logo
+{
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+}
+
+header ul
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li
+{
+    list-style: none;
+    margin-left: 20px;
+    
+}
+
+@media only screen and (max-width: 750px){
+    header ul {
+        flex-direction: column;
+    }
+    header ul li 
+    {
+        padding-bottom: 10px;
+    }
+}
+
+header ul li a 
+{
+    text-decoration: none;
+    padding:6px 15px;
+    color: #fff;
+    border-radius: 20px;
+
+}
+
+header ul li a:hover  , 
+header ul li a.active
+{
+    background: #fff;
+    color: #5D733D;
+
+}
+
+section
+{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+section::before
+{
+    content: '';
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top,#734230,transparent);
+    z-index: 1000;
+}
+
+section img 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+section img#moon
+{
+    mix-blend-mode: screen;
+    margin-left: -20vw;
+}
+
+
+section img#desert_bubbly
+{
+    position: absolute;
+    top: 10vh;
+}
+
+#btn
+{
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 40px;
+    border-radius: 40px;
+    background: #fff;
+    color: #5D733D;
+    font-size: 1.5em;
+    z-index: 9;
+    transform: translateY(100px);
+
+}
+
+#text
+{
+    position: absolute;
+    color: #fff;
+    white-space: nowrap;
+    font-size: 4vw;
+    z-index: 9;
+}
+
+/* section with text in home page*/
+.sec
+{
+    position: relative;
+    padding: 10vw;
+    background: #F2D0A7;
+     
+
+}
+
+section::before
+{
+    content: '';
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top,#F2D0A7,transparent);
+    z-index: 1000;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 4vw;
+    margin-top: 5vh;
+  }
+  .container > div {
+    padding: 20px;
+    background-size: cover;
+    background-color: #fff;
+    border-radius: 40px;
+    aspect-ratio: 1;
+    
+  }
+ .container > div:hover
+ {
+     background-color: #fdad6b;
+     background-repeat: no-repeat;
+
+ }
+
+  .cougar
+  {
+    background: url(cougar.png);
+  }
+
+  .scorpian
+  {
+
+    background: url(scorpian.png);
+  }
+
+  .snake {
+    background: url(snake.png);
+  }
+
+  .goat {
+    background: url(goat.png);
+  }
+
+  .owl {
+    background: url(owl.png);
+  }
+
+  .rabbit {
+    background: url(rabbit.png);
+  }
+
+  .socials {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 10vh;
+    padding-right: 25px;
+    background-color: #F2D0A7;
+  }
+  
+  .socials ion-icon {
+    margin: 20px;
+    color: #fff;
+  }
+
+  .sec h2 {
+    color: #fff;
+    font-size: 3em;
+  }

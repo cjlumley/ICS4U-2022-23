@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://kit.fontawesome.com/18d812127c.js" crossorigin="anonymous"></script>
+    <title>The Mojave Desert</title>
+</head>
+<body>
+    <header>
+        <!-- The Menu / Nav bar -->
+        <li> <a href="index.html" class="logo">Mojave</a></li>
+        <ul>
+           <li><a href="index.html" class="active">Home</a></li>
+           <li><a href="Animals.html">Animals</a></li>
+           <li><a href="about.html">About</a></li>
+           <li><a href="contact.html">Contact</a></li>
+       </ul>
+
+    </header>
+    <section>
+        <!-- all images and main text points -->
+        <img src="moon1.png" id="moon">
+        <img src="flatclouds_behind.png" id="flatclouds_behind">
+        <img src="flatclouds.png" id="stars">       
+        <img src="mountains_behind1.png" id="mountains_behind">
+        <h2 id="text">Mojave</h2>
+        <a href="#sec" id="btn">Learn</a>
+        <img src="mountains_front1.png" id="mountains_front">
+    </section>
+    <div class="sec" id="sec">
+        <!-- Info Section -->
+        <h2>The Mojave Desert</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem similique incidunt adipisci, aut praesentium quisquam quae libero ratione a eos porro culpa iusto esse eius illo magnam, iure saepe quibusdam earum nam magni vitae. Ullam, fugiat? Expedita deserunt reprehenderit eaque quidem accusamus doloremque quisquam libero aspernatur deleniti? Voluptatem placeat aliquid accusamus consequuntur sequi. Similique pariatur temporibus sed molestiae eos quis ullam necessitatibus quos a deleniti laboriosam, saepe iure voluptate corporis aliquid adipisci eaque reiciendis aperiam.<br>
+        <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas sint quas necessitatibus magni modi quam aspernatur eos inventore quaerat distinctio facilis tenetur consectetur, aliquid nulla minus enim. Facilis adipisci eos ipsa ullam fugiat qui illum laborum debitis voluptatem, quae quisquam consectetur aperiam obcaecati quam ipsum accusantium repellat repudiandae molestiae officiis recusandae nobis totam! Distinctio perferendis enim voluptatum ad. Sunt iure suscipit officiis ea, quo libero. Exercitationem, ex? Illo eos aliquam, perferendis totam possimus quae explicabo?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem similique incidunt adipisci, aut praesentium quisquam quae libero ratione a eos porro culpa iusto esse eius illo magnam, iure saepe quibusdam earum nam magni vitae. Ullam, fugiat? Expedita deserunt reprehenderit eaque quidem accusamus doloremque quisquam libero aspernatur deleniti? Voluptatem placeat aliquid accusamus consequuntur sequi. Similique pariatur temporibus sed molestiae eos quis ullam necessitatibus quos a deleniti laboriosam, saepe iure voluptate corporis aliquid adipisci eaque reiciendis aperiam.<br>
+        <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas sint quas necessitatibus magni modi quam aspernatur eos inventore quaerat distinctio facilis tenetur consectetur, aliquid nulla minus enim. Facilis adipisci eos ipsa ullam fugiat qui illum laborum debitis voluptatem, quae quisquam consectetur aperiam obcaecati quam ipsum accusantium repellat repudiandae molestiae officiis recusandae nobis totam! Distinctio perferendis enim voluptatum ad. Sunt iure suscipit officiis ea, quo libero. Exercitationem, ex? Illo eos aliquam, perferendis totam possimus quae explicabo?</p>
+    
+  
+    </div>
+    <footer class="socials">
+        <!-- Social media footer -->
+        <a href=https://twitter.com><ion-icon name="logo-twitter"></ion-icon></a>
+        <a href=https://instagram.com><ion-icon name="logo-instagram"></ion-icon></a>
+        <a href=https://tiktok.com><ion-icon name="logo-tiktok"></ion-icon></a>
+      </footer>
+      
+  
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+    <script>
+
+        // simple script that makes the y value of the page move the images in directions for a paralax effect 
+        
+        let stars = document.getElementById('stars');
+        let flatclouds_behind = document.getElementById('flatclouds_behind');
+        let moon = document.getElementById('moon');
+        let mountains_behind = document.getElementById('mountains_behind');
+        let text = document.getElementById('text');
+        let btn = document.getElementById('btn');
+        let mountains_front = document.getElementById('mountains_front');
+        let header = document.querySelector('header');
+
+
+
+        window.addEventListener('scroll', function(){
+            let value = window.scrollY;
+            // lets stars move when scrollign
+            stars.style.left = value * 0.25 + 'px';
+            flatclouds_behind.style.left = value * 0.1 + 'px';
+            moon.style.top = value * 2 + 'px';
+            mountains_behind.style.top = value * 0.35 + 'px';
+            mountains_front.style.top = value * 0 + 'px';
+            //text.style.left = value * 3 + 'px';
+            text.style.marginTop = value * 1 + 'px';
+            btn.style.marginTop = value * 2 + 'px';
+            header.style.top = value * 0.5 + 'px';     
+            //vulture.style.marginLeft= value * 0.5 + 'px';       
+        })
+    </script>
+</body>
+</html>
