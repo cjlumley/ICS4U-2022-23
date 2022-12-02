@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=di, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+   <title>Document</title>
+</head>
+<style>
+  /* Styling the area of the slides */
+  #slideshow {
+  overflow: hidden;
+  height: 30vh;
+  width: 20vw;
+  margin: 0 auto;
+  }
+
+  /* Style each of the sides
+  with a fixed width and height */
+  .slide {
+  float: left;
+  height: 30vh; 
+  width: 20vw;
+  }
+
+  /* Add animation to the slides */
+  .slide-wrapper {
+
+  /* Calculate the total width on the
+  basis of number of slides */
+  width: calc(20vw * 4);  
+
+  /* Specify the animation with the
+  duration and speed */
+  animation: slide 10s ease infinite;
+  }
+
+  /* Set the background color
+  of each of the slides */
+  .slide:nth-child(1) {
+    background: green;
+  }
+
+  .slide:nth-child(2) {
+  background: pink;
+  }
+
+  .slide:nth-child(3) {
+  background: red;
+  }
+
+  .slide:nth-child(4) {
+  background: yellow;
+  }
+
+  /* Define the animation
+  for the slideshow */
+  @keyframes slide {
+
+  /* Calculate the margin-left for
+  each of the slides */
+  20% {
+    margin-left: 0px;
+  }
+
+  40% {
+    margin-left: calc(-20vw * 1);
+  }
+
+  60% {
+    margin-left: calc(-20vw * 2);
+  }
+
+  80% {
+    margin-left: calc(-20vw * 3);
+  }
+  }
+
+</style>
+<body>
+   <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/nba-logo-transparent.png">
+        </a>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="index.html">
+            Home
+          </a>
+    
+          <a class="navbar-item" href="standings.html">
+            Standings
+          </a>
+          
+          <a class="navbar-item" href="games.html">
+            Games
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              More
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                About
+              </a>
+              <a class="navbar-item">
+                Jobs
+              </a>
+              <a class="navbar-item">
+                Contact
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item">
+                Report an issue
+              </a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light" href="admin.html">
+                Admin
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section>
+    </section>
+   <div class="tile is-ancestor" style="margin: 2.5vw;">
+    <div class="tile is-vertical is-8">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child notification is-primary">
+            <p class="title">Recent Scores</p>
+            <div class="card" style="border-radius: 10px;">
+              <div class="card-content">
+                <div class="content">
+                  <h1>
+                    Injury Report
+                  </h1>
+                  <h3 class="score-top">Khris Middleton (MIL)</h3>
+                  <h5>Wrist</h4>
+                  <h3 class="score-bottom">Kawhi Leonard (LAC)</h3>
+                  <h5>Ankle</h5>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="tile is-child notification is-warning">
+            <p class="title">...tiles</p>
+            <p class="subtitle">Bottom tile</p>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-info">
+            <p class="title">NBA News</p>
+            <p class="subtitle">Check Recent Stories and Articles</p>
+            <div id="slideshow">
+              <div class="slide-wrapper">
+                   
+              <!-- Define each of the slides
+               and write the content -->
+                
+                  <div class="slide">
+                      <h1 class="slide-number">
+                          SLIDE
+                      </h1>
+                  </div>
+                  <div class="slide">
+                      <h1 class="slide-number">
+                          NEWS
+                      </h1>
+                  </div>
+                  <div class="slide">
+                      <h1 class="slide-number">
+                          MORE NEWS
+                      </h1>
+                  </div>
+                  <div class="slide">
+                      <h1 class="slide-number">
+                          EVEN MORE NEWS
+                      </h1>
+                  </div>
+              </div>
+          </div>
+          </article>
+        </div>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-danger">
+          <p class="title">Stadnings</p>
+          <p class="subtitle">Top 5 Teams in Each Conference</p>
+          <div class="content">
+            
+            <div class="tabs is-boxed">
+              <ul>
+                <li class="is-active" id="buttonEast" style="color: #000;" onclick="createTable(teamsE); eastActive()">
+                  <a>
+                    <span class="icon is-small"><i class="fas fa-buildings" aria-hidden="true"></i></span>
+                    <span>East</span>
+                  </a>
+                </li>
+                <li id="buttonWest" onclick="createTable(teamsW); westActive()">
+                  <a>
+                    <span class="icon is-small"><i class="fa-solid fa-tree-palm"></i></span>
+                    <span>West</span>
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+            <table id="standingsTopFive" class="table is-hoverable" style="border-radius: 10px;">
+              <thead>
+                 <tr>
+                    <th onclick="sort('Pos')";>Pos</th>
+                    <th onclick="sort('Name');">Name</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Pct</th>
+                    <th>GB</th>
+                    <th>Conf</th>
+                    <th>Home</th>
+                    <th>Away</th>
+                    <th>L10</th>
+                    <th>Strk</th>
+                 </tr>
+              </thead>
+              <tbody></tbody>
+           </table>
+           <div>
+            <a href="standings.html"><i class="fa-solid fa-circle-down fa-2x" style="display: flex; justify-content: center;"></i></a>
+           </div>
+          </div>  
+        </article>
+      </div>
+    </div>
+    <div class="tile is-parent" style="overflow: scroll;">
+      <article class="tile is-child notification is-success">
+        <div class="content">
+          <p class="title">Twitter</p>
+          <p class="subtitle">Check Out Highlights and Behind the Scenes</p>
+          <div class="content" style="height: 100%;">
+            <a class="twitter-timeline" data-height="800" href="https://twitter.com/NBA?ref_src=twsrc%5Etfw">Tweets by NBA</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+<script>
+   
+   //const dataString ='[{"Id":1,"Pos":1,"Name":"Bucks","W":7,"L":0,"Pct":1.000,"GB":"-","Conf":"6-0","Home":"6-0","Away":"1-0","L10":"7-0","Strk":"W7"},{"Id":2,"Pos":2,"Name":"Cavaliers","W":6,"L":1,"Pct":0.857,"GB":1.0,"Conf":"6-1","Home":"4-0","Away":"2-1","L10":"6-1","Strk":"W6"}, {"Id":3,"Pos":3,"Name":"Raptors","W":5,"L":3,"Pct":0.625,"GB":"2.5","Conf":"4-3","Home":"3-1","Away":"2-2","L10":"5-3","Strk":"W2"},{"Id":4,"Pos":4,"Name":"Hawks","W":5,"L":3,"Pct":0.625,"GB":"2.5","Conf":"4-3","Home":"2-1","Away":"3-2","L10":"5-3","Strk":"W1"},{"Id":5,"Pos":5,"Name":"Celtics","W":4,"L":3,"Pct":0.571,"GB":"3.0","Conf":"4-3","Home":"2-1","Away":"2-2","L10":"4-3","Strk":"L1"},{"Id":6,"Pos":6,"Name":"Wizards","W":3,"L":4,"Pct":0.571,"GB":"3.0","Conf":"4-3","Home":"2-1","Away":"2-2","L10":"4-3","Strk":"L1"}]';
+
+
+
+
+   //teams = JSON.parse(dataString);
+   //localStorage.setItem('teams', JSON.stringify(teams));
+
+   teams = JSON.parse(localStorage.getItem('teams'));
+   teamsE = JSON.parse(localStorage.getItem('teamsE'));
+   teamsW = JSON.parse(localStorage.getItem('teamsW'));
+   //console.log(teams);
+
+   createTable(teamsE);
+   createScoreCard();
+
+   function createScoreCard(){
+
+    let scoreTop = document.querySelector('.score-top')
+    let scoreBottom = document.querySelector('.score-bottom')
+
+    if (parse(scoreTop) > parse(scoreBottom)) {
+      scoreTop.style.opacity = '0.5';
+    } else {
+      scoreBottom.style.opacity = '0.5';
+    }
+
+   }
+
+   function eastActive(){
+    const west = document.getElementById("buttonWest");
+    const east = document.getElementById("buttonEast");
+
+    east.className = "is-active";
+    east.style = "color: #000";
+    west.className = "";
+    west.style = "";
+
+
+   }
+
+   function westActive(){
+    const west = document.getElementById("buttonWest");
+    const east = document.getElementById("buttonEast");
+
+    west.className = "is-active"
+    west.style = "color: #000;"
+    east.className = "";
+    east.style = "";
+
+
+   }
+
+   function createTable(teams) {
+      let tableBody = document.querySelector('#standingsTopFive tbody');
+      tableBody.replaceChildren();
+
+      for (let i = 0; i < 5; i++) {
+      if (teamsW[i].Pos <= 5) {
+        const row = document.createElement('tr');
+         let cell = document.createElement('td');
+         cell.textContent = teams[i].Pos;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = teams[i].Name;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = teams[i].W;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent =teams[i].L;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = teams[i].Pct;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = teams[i].GB;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = teams[i].Conf;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = teams[i].Home;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = teams[i].Away;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = teams[i].L10;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = teams[i].Strk;
+         row.appendChild(cell);
+         tableBody.appendChild(row);
+      }
+   }
+
+     /* teams.forEach((team) => {
+         const row = document.createElement('tr');
+         let cell = document.createElement('td');
+         cell.textContent = team.Pos;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Name;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.W;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.L;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Pct;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.GB;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Conf;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Home;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Away;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.L10;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Strk;
+         row.appendChild(cell); 
+         tableBody.appendChild(row);
+      }); */
+   }
+
+
+   function sort(field) {
+      if (field === 'Name') {
+         teams = teams.sort((teamA, teamB) => {
+            return (teamA.Name < teamB.Name) ? -1 : 1
+         });
+      } else if (field === 'Pos') {
+         teams = teams.sort((teamA, teamB) => teamA.Pos - teamB.Pos);
+      } else if (field === 'Wins') {
+        teams = teams.sort((teamA, teamB) => teamB.W - teamA.W);
+      }
+
+      createTable(teams);
+   }
+   
+
+</script>
+
+</html>

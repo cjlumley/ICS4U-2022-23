@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=di, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+   <title>Document</title>
+</head>
+
+<style>
+
+</style>
+
+<body style="overflow: hidden;">
+   <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/nba-logo-transparent.png">
+        </a>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="index.html">
+            Home
+          </a>
+    
+          <a class="navbar-item" href="standings.html">
+            Standings
+          </a>
+
+          <a class="navbar-item" href="standings.html">
+            Games
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              More
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                About
+              </a>
+              <a class="navbar-item">
+                Jobs
+              </a>
+              <a class="navbar-item">
+                Contact
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item">
+                Report an issue
+              </a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light" href="admin.html">
+                Admin
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <section style="margin-bottom: 20px;">
+      <section class="hero is-info">
+         <div class="hero-body">
+           <p class="title">
+             Team Standings
+           </p>
+           <p class="subtitle">
+             Check out Current Standings of the 2022-2023 NBA Season
+           </p>
+         </div>
+       </section>
+     </section>
+
+    <div class="tile is-ancestor">
+      <div class="tile is-6">
+        <div class="tile is-child box">
+          <table id="standingsEast" class="table is-hoverable" style="margin: 10px;">
+            <thead>
+               <tr>
+                  <th onclick="sort('Pos')";>Pos</th>
+                  <th onclick="sort('Name');">Name</th>
+                  <th>Wins</th>
+                  <th>Losses</th>
+                  <th>Pct</th>
+                  <th>GB</th>
+                  <th>Conf</th>
+                  <th>Home</th>
+                  <th>Away</th>
+                  <th>L10</th>
+                  <th>Strk</th>
+               </tr>
+            </thead>
+            <tbody></tbody>
+         </table>
+        </div>
+      </div>
+      <div class="tile">
+        <div class="tile is-child box">
+          <table id="standingsWest" class="table is-hoverable" style="margin: 10px;">
+            <thead>
+               <tr>
+                  <th onclick="sort('Pos')";>Pos</th>
+                  <th onclick="sort('Name');">Name</th>
+                  <th>Wins</th>
+                  <th>Losses</th>
+                  <th>Pct</th>
+                  <th>GB</th>
+                  <th>Conf</th>
+                  <th>Home</th>
+                  <th>Away</th>
+                  <th>L10</th>
+                  <th>Strk</th>
+               </tr>
+            </thead>
+            <tbody></tbody>
+         </table>
+        </div>
+      </div>
+    </div>
+    
+
+
+</body>
+
+<script>
+
+   
+
+      teams = JSON.parse(localStorage.getItem('teams'));
+    teamsE = JSON.parse(localStorage.getItem('teamsE'));
+    teamsW = JSON.parse(localStorage.getItem('teamsW'));
+    createTableEast(teamsE);
+    createTableWest(teamsW);
+
+
+function createTableEast(teamsE) {
+      let tableBody = document.querySelector('#standingsEast tbody');
+      tableBody.replaceChildren();
+
+      teamsE.forEach((team) => {
+        const row = document.createElement('tr');
+         let cell = document.createElement('td');
+         cell.textContent = team.Pos;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         let link = document.createElement('a');
+         link.href = 'teams.html?id=' + team.Id;
+         link.textContent = team.Name;
+         cell.appendChild(link);
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.W;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.L;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Pct;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.GB;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Conf;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Home;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Away;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.L10;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Strk;
+         row.appendChild(cell);
+         tableBody.appendChild(row);
+      });
+      
+
+      /* teams.forEach((team) => {
+         const row = document.createElement('tr');
+         let cell = document.createElement('td');
+         cell.textContent = team.Pos;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         let link2 = document.createElement('a');
+         link2.href='games.html?id='+team.Name;
+         cell.appendChild(link2);
+         row.appendChild(cell);
+         console.log('test')
+         cell.textContent = team.Name;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.W;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.L;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Pct;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.GB;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Conf;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Home;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Away;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.L10;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Strk;
+         row.appendChild(cell);
+         tableBody.appendChild(row);
+      }); */
+   }
+
+   function createTableWest(teamsW) {
+      let tableBody = document.querySelector('#standingsWest tbody');
+      tableBody.replaceChildren();
+
+      teamsW.forEach((team) => {
+        const row = document.createElement('tr');
+         let cell = document.createElement('td');
+         cell.textContent = team.Pos;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         let link = document.createElement('a');
+         link.href = 'teams.html?id=' + team.Id;
+         link.textContent = team.Name;
+         cell.appendChild(link);
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.W;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.L;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Pct;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.GB;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Conf;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Home;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Away;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.L10;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Strk;
+         row.appendChild(cell);
+         tableBody.appendChild(row);
+      });
+    }
+  
+
+</script>
+</html>

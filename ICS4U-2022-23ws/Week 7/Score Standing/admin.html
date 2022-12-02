@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=di, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+   <link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">
+   <title>Document</title>
+</head>
+ <style>
+  body {
+    overflow: hidden;
+  }
+
+ </style>
+<body>
+   <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/nba-logo-transparent.png">
+        </a>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="index.html">
+            Home
+          </a>
+    
+          <a class="navbar-item" href="standings.html">
+            Standings
+          </a>
+
+          <a class="navbar-item" href="standings.html">
+            Games
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              More
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                About
+              </a>
+              <a class="navbar-item">
+                Jobs
+              </a>
+              <a class="navbar-item">
+                Contact
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item">
+                Report an issue
+              </a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light" href="admin.html">
+                Admin
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section style="margin-bottom: 20px;">
+      <section class="hero is-info">
+         <div class="hero-body">
+           <p class="title">
+             Team Scores
+           </p>
+           <p class="subtitle">
+             Edit and Update Team Scores
+           </p>
+         </div>
+       </section>
+       <div style="margin: 10px">
+        <div class="select is-info">
+            <select id="dropNames"></select>
+          </div>
+          <input class="input" type="text" placeholder="Wins" id="winInput"; style="width: 10vw;">
+          <input class="input" type="text" placeholder="Losses" id="lossInput"; style="width: 10vw;">
+          <input class="input" type="text" placeholder="Conf" id="confInput"; style="width: 10vw;">
+          <input class="input" type="text" placeholder="Home" id="homeInput"; style="width: 10vw;">
+          <input class="input" type="text" placeholder="Away" id="awayInput"; style="width: 10vw;">
+          <input class="input" type="text" placeholder="L10" id="l10Input"; style="width: 10vw;">
+          <input class="input" type="text" placeholder="Strk" id="strkInput"; style="width: 10vw;">
+          <input class="button" type="submit" value="Submit input" onclick="submitStandings()">
+         </div>
+         <div class="tile is-ancestor">
+          <div class="tile is-6">
+            <div class="tile is-child box">
+              <table id="standings" class="table is-hoverable" style="margin: 10px;">
+                <thead>
+                   <tr>
+                      <th onclick="sort('Pos')";>Pos</th>
+                      <th onclick="sort('Name');">Name</th>
+                      <th>Wins</th>
+                      <th>Losses</th>
+                      <th>Pct</th>
+                      <th>GB</th>
+                      <th>Conf</th>
+                      <th>Home</th>
+                      <th>Away</th>
+                      <th>L10</th>
+                      <th>Strk</th>
+                   </tr>
+                </thead>
+                <tbody></tbody>
+             </table>
+            </div>
+          </div>
+          <div class="tile">
+            <div class="tile is-child box">
+              <table id="standingsWest" class="table is-hoverable" style="margin: 10px;">
+                <thead>
+                   <tr>
+                      <th onclick="sort('Pos')";>Pos</th>
+                      <th onclick="sort('Name');">Name</th>
+                      <th>Wins</th>
+                      <th>Losses</th>
+                      <th>Pct</th>
+                      <th>GB</th>
+                      <th>Conf</th>
+                      <th>Home</th>
+                      <th>Away</th>
+                      <th>L10</th>
+                      <th>Strk</th>
+                   </tr>
+                </thead>
+                <tbody></tbody>
+             </table>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section>
+      <section class="hero is-info">
+         <div class="hero-body">
+           <p class="title">
+             Game Scores
+           </p>
+           <p class="subtitle">
+             Edit and Update Game Scores
+           </p>
+         </div>
+       </section>
+       <div style="margin: 10px">
+         <div class="select is-info"><select id="dropNames1"></select></div>
+           <input class="input" type="text" placeholder="Score" id="scoreInput"; style="width: 10vw;">
+           <div class="select is-info"><select id="dropNames2"></select></div>
+           <input class="input" type="text" placeholder="Score" id="scoreInput2"; style="width: 10vw;">
+           <label for="gameDate">Date</label>
+           <input type="date" id="gameDate" class="gameDateInput">
+           <input class="button" type="submit" value="Submit input" onclick="submitGameScore()">
+          
+          </div>
+    </section>
+</body>
+
+<script>
+
+   
+
+    teams = JSON.parse(localStorage.getItem('teams'));
+    teamsE = JSON.parse(localStorage.getItem('teamsE'));
+    teamsW = JSON.parse(localStorage.getItem('teamsW'));
+    games = JSON.parse(localStorage.getItem('games'));
+    createTable(teamsE);
+    createTableWest(teamsW);
+
+
+createDropdown(teams, '#dropNames');
+createDropdown(teams, '#dropNames1');
+createDropdown(teams, '#dropNames2');
+
+
+function createDropdown(teams,id) {
+   let dropDown = document.querySelector(id);
+   dropDown.replaceChildren();
+
+   teams.forEach((team) => {
+      const row = document.createElement('option');
+      row.className = "dropdown-Name";
+      row.textContent = team.Name;
+      dropDown.appendChild(row);
+   });
+}
+
+function miscReset() {
+  setPos();
+}
+
+function submitStandings() {
+  console.log(winInput.value);
+  console.log(lossInput.value);
+  console.log(dropNames.value);
+
+  
+  for (let i = 0; i < teamsE.length; i++) {
+      if (teamsE[i].Name == dropNames.value) {
+      teamsE[i].W = parseInt(winInput.value);
+      teamsE[i].L = parseInt(lossInput.value);
+      teamsE[i].Pct = setPct(teams[i].W,teams[i].L);
+      teamsE[i].Home = homeInput.value;
+      teamsE[i].Away = awayInput.value;
+      teamsE[i].L10 = l10Input.value;
+      teamsE[i].Strk = strkInput.value;
+      setGB(teamsE);
+      setPos();
+      localStorage.setItem('teamsE', JSON.stringify(teamsE));
+      createTable(teamsE);
+      }
+   }
+
+   for (let i = 0; i < teamsW.length; i++) {
+      if (teamsW[i].Name == dropNames.value) {
+      teamsW[i].W = parseInt(winInput.value);
+      teamsW[i].L = parseInt(lossInput.value);
+      teamsW[i].Pct = setPct(teams[i].W,teams[i].L);
+      teamsW[i].Home = homeInput.value;
+      teamsW[i].Away = awayInput.value;
+      teamsW[i].L10 = l10Input.value;
+      teamsW[i].Strk = strkInput.value;
+      setGB(teamsW);
+      setPos();
+      localStorage.setItem('teamsW', JSON.stringify(teamsW));
+      createTableWest(teamsW);
+      }
+   }
+
+   localStorage.setItem('teams', JSON.stringify(teamsE.concat(teamsW)));
+
+}
+
+function setPct(wins, losses){
+   var pct = wins/(wins+losses);
+   var pctRound = (Math.round( pct* 100) / 100).toFixed(3)
+   if (pctRound > 1){
+      return 1;
+   }
+   else {
+      return (pctRound)
+   }
+}
+
+function setGB(team){
+
+  topTeam = "";
+
+    for (let i = 0; i < team.length; i++) {
+        if (team[i].Pos == 1){
+           topTeam = team[i];
+        }
+        
+        team[i].GB = ((topTeam.W-topTeam.L)-(team[i].W-team[i].L))/2;
+  }
+}
+
+function setPos() { //need to work on
+  teamsW = teamsW.sort((teamA, teamB) => teamB.W - teamA.W);
+  teamsE = teamsE.sort((teamA, teamB) => teamB.W - teamA.W);
+  
+  for (let i = 0; i < teamsW.length; i++){
+    teamsW[i].Pos = i+1;
+  }
+  for (let i = 0; i < teamsE.length; i++){
+    teamsE[i].Pos = i+1;
+  }
+
+}
+
+function createTable(teams) {
+      let tableBody = document.querySelector('#standings tbody');
+      tableBody.replaceChildren();
+
+      teams.forEach((team) => {
+         const row = document.createElement('tr');
+         let cell = document.createElement('td');
+         cell.textContent = team.Pos;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Name;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.W;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.L;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Pct;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.GB;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Conf;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Home;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Away;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.L10;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Strk;
+         row.appendChild(cell);
+         tableBody.appendChild(row);
+      });
+   }
+
+   function createTableWest(teamsW) {
+      let tableBody = document.querySelector('#standingsWest tbody');
+      tableBody.replaceChildren();
+
+      teamsW.forEach((team) => {
+         const row = document.createElement('tr');
+         let cell = document.createElement('td');
+         cell.textContent = team.Pos;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Name;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.W;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.L;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Pct;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.GB;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Conf;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Home;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Away;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.L10;
+         row.appendChild(cell);
+         cell = document.createElement('td');
+         cell.textContent = team.Strk;
+         row.appendChild(cell);
+         tableBody.appendChild(row);
+      });
+   }
+
+function submitGameScore(){
+   
+   array = [{"Home":dropNames1.value,"homeScore":scoreInput.value, "Away":dropNames2.value, "awayScore":scoreInput2.value}];
+  
+   console.log(dropNames1.value);
+   console.log(scoreInput.value);
+   console.log(dropNames2.value);
+   console.log(scoreInput2.value);
+   console.log(gameDate.value)
+
+   games = localStorage.getItem('games')
+   games.concat(array);
+
+   console.log(array);
+  console.log(games);
+
+   localStorage.setItem('games', JSON.stringify(games));
+
+}
+
+</script>
+</html>
